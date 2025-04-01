@@ -6,19 +6,85 @@
     <title>Contact Us - XYZ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .dropdown-content {
+            display: none;
+            line-height: 40px;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .announcement-slider .announcement {
+            display: none;
+        }
+
+        .announcement-slider .announcement.active {
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .mobile-menu {
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1><a href="index.html">XYZ</a></h1>
+                <h1><a href="index.html">Lalmani Vikash Bharti School</a></h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="academics.html">Academics</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)">About Us <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="about.html">About</a><br>
+                            <a href="">From Principal</a><br>
+                            <a href="">Staff</a><br>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)">Academics <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="">School Timings</a><br>
+                            <a href="">Syllabus</a><br>
+                            <a href="">Holiday List</a><br>
+                            <a href="">Fee Structure</a><br>
+                            <a href="">General Guidelines</a><br>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
@@ -35,17 +101,17 @@
                 <div class="info-card">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>Address</h3>
-                    <p>123 Education Street<br>Learning City, LC 12345</p>
+                    <p>Laldarwaza, Behind Powerhouse, Munger, Bihar -811201</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-phone"></i>
                     <h3>Phone</h3>
-                    <p>Main Office: (123) 456-7890<br>Admissions: (123) 456-7891</p>
+                    <p>Main Office: +91 8884758905</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
-                    <p>General Inquiries: info@brightfuture.edu<br>Admissions: admissions@brightfuture.edu</p>
+                    <p>General Inquiries: info@brightfuture.edu</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-clock"></i>
@@ -61,14 +127,7 @@
             <center><div class="map-container">
                 <h2>Visit Our Campus</h2>
                 <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7775.892177879073!2d77.591!3d12.975299999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1743265106852!5m2!1sen!2sin" 
-                        width="100%" 
-                        height="400" 
-                        style="border:0;" 
-                        llowfullscreen 
-                        loading="lazy">
-                    </iframe>
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225.2806734864408!2d86.47045535339437!3d25.388377651798038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f1ef1cbf9fa22d%3A0xb3b8b73a1e904b98!2sLalmani%20Vikas%20Bharti%20Middle%20School!5e0!3m2!1sen!2sin!4v1743496556566!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div></center>
         </div></center>
@@ -78,12 +137,6 @@
         <div class="container">
             <h2>Contact Specific Departments</h2>
             <div class="department-grid">
-                <div class="department-card">
-                    <h3>Admissions Office</h3>
-                    <p><i class="fas fa-phone"></i> (123) 456-7891</p>
-                    <p><i class="fas fa-envelope"></i> admissions@brightfuture.edu</p>
-                    <a href="admissions.html" class="btn-small">Visit Admissions Page</a>
-                </div>
                 <div class="department-card">
                     <h3>Academic Office</h3>
                     <p><i class="fas fa-phone"></i> (123) 456-7892</p>
@@ -95,18 +148,6 @@
                     <p><i class="fas fa-phone"></i> (123) 456-7893</p>
                     <p><i class="fas fa-envelope"></i> studentservices@brightfuture.edu</p>
                     <a href="#" class="btn-small">Learn More</a>
-                </div>
-                <div class="department-card">
-                    <h3>Athletics Department</h3>
-                    <p><i class="fas fa-phone"></i> (123) 456-7894</p>
-                    <p><i class="fas fa-envelope"></i> athletics@brightfuture.edu</p>
-                    <a href="#" class="btn-small">View Sports Programs</a>
-                </div>
-                <div class="department-card">
-                    <h3>Alumni Relations</h3>
-                    <p><i class="fas fa-phone"></i> (123) 456-7895</p>
-                    <p><i class="fas fa-envelope"></i> alumni@brightfuture.edu</p>
-                    <a href="#" class="btn-small">Alumni Portal</a>
                 </div>
                 <div class="department-card">
                     <h3>Business Office</h3>
@@ -135,15 +176,16 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3>XYZ</h3>
-                    <p>MUNGER<br><br>Phone: <br>Email: </p>
+                    <h3>Lalmani Vikash Bharti School</h3>
+                    <p>Lalmani Vikash Bharti School, Laldarwaza, <br>Behind Powerhouse, Munger, Bihar -811201 <br>
+                        <br>Phone: &emsp; +91 8884758905 &emsp; 06344-220275 <br>
+                         <br>Email: </p>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="academics.html">Academics</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -158,7 +200,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 XYZ. All Rights Reserved.</p>
+                <p>&copy; 2023 Lalmani Vikash Bharti School. All Rights Reserved.</p>
                 <div class="footer-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -168,5 +210,69 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav ul');
+
+    mobileMenu.addEventListener('click', () => {
+        nav.classList.toggle('open');
+    });
+
+    const dropdownLinks = document.querySelectorAll('.dropdown > a');
+
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const parentDropdown = link.parentElement;
+            parentDropdown.classList.toggle('active');
+
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                if (dropdown !== parentDropdown) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown').forEach(dropdown => dropdown.classList.remove('active'));
+        }
+    });
+
+    const announcements = document.querySelectorAll('.announcement');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentIndex = 0;
+
+    const updateSlider = (index) => {
+        announcements.forEach((announcement, i) => {
+            announcement.classList.toggle('active', i === index);
+        });
+    };
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
+        updateSlider(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % announcements.length;
+        updateSlider(currentIndex);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
+            updateSlider(currentIndex);
+        } else if (e.key === 'ArrowRight') {
+            currentIndex = (currentIndex + 1) % announcements.length;
+            updateSlider(currentIndex);
+        }
+    });
+});
+
+    </script>
 </body>
 </html>
