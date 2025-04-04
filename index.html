@@ -4,62 +4,365 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lalmani Vikash Bharti School</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .dropdown-content {
-            display: none;
-            line-height: 40px;
-            position: absolute;
-            background-color: #fff;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
-
-        .announcement-slider .announcement {
-            display: none;
-        }
-
-        .announcement-slider .announcement.active {
-            display: block;
-        }
-
-        nav ul {
-            list-style: none;
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
+            box-sizing: border-box;
         }
-
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .logo h1 a:hover {
+            color: #f1c40f;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            padding: 10px 0;
+        }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+        
+        /* Mobile Menu */
         .mobile-menu {
+            display: none;
             cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 40px 0;
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 40px 0;
+            background-color: #fff;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Announcements */
+        .announcements {
+            padding: 40px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .announcements h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        
+        .announcement-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .announcement {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             display: none;
         }
-
+        
+        .announcement.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .announcement h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .announcement p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .announcement .date {
+            display: block;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .slider-controls button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slider-controls button:hover {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #f1c40f;
+        }
+        
+        .footer-col p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #f1c40f;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a:hover {
+            color: #f1c40f;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
             nav ul {
                 display: none;
                 flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #2c3e50;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
-
+            
             nav ul.open {
                 display: flex;
             }
-
-            .mobile-menu {
-                display: block;
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+                padding: 10px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="header-container container">
             <div class="logo">
                 <h1><a href="index.html">Lalmani Vikash Bharti School</a></h1>
             </div>
@@ -67,21 +370,21 @@
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)">About Us <i class="fas fa-chevron-down"></i></a>
+                        <a href="#">About Us</a>
                         <div class="dropdown-content">
-                            <a href="">About</a><br>
-                            <a href="">From Principal</a><br>
-                            <a href="">Staff</a><br>
+                            <a href="about.html"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;About</a>
+                            <a href="#"><i class="fas fa-user-tie"></i>&nbsp;&nbsp;From Principal</a>
+                            <a href="#"><i class="fas fa-users"></i>&nbsp;&nbsp;Staff</a>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)">Academics <i class="fas fa-chevron-down"></i></a>
+                        <a href="#">Academics</a>
                         <div class="dropdown-content">
-                            <a href="">School Timings</a><br>
-                            <a href="">Syllabus</a><br>
-                            <a href="">Holiday List</a><br>
-                            <a href="">Fee Structure</a><br>
-                            <a href="">General Guidelines</a><br>
+                            <a href="#"><i class="fas fa-clock"></i>&nbsp;&nbsp;School Timings</a>
+                            <a href="#"><i class="fas fa-tasks"></i>&nbsp;&nbsp;Syllabus</a>
+                            <a href="#"><i class="fas fa-umbrella-beach"></i>&nbsp;&nbsp;Holiday List</a>
+                            <a href="#"><i class="fa fa-inr"></i>&nbsp;&nbsp;Fee Structure</a>
+                            <a href="#"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp;General Guidelines</a>
                         </div>
                     </li>
                     <li><a href="contact.html">Contact</a></li>
@@ -91,71 +394,74 @@
                 </div>
             </nav>
         </div>
-    </header><br><br>
+    </header>
 
-    <section class="video-section">
-        <div class="container">
-            <div class="video-container">
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/EXAMPLEVIDEOID" 
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen></iframe>
+    <main>
+        <section class="video-section">
+            <div class="container">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/EXAMPLEVIDEOID" 
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="announcements">
-        <div class="container">
-            <h2>Latest Announcements</h2>
-            <div class="announcement-slider">
-                <div class="announcement active">
-                    <h3>Parent-Teacher Meetings</h3>
-                    <p>Scheduled for next week, October 15-19. Please check your emails for time slots.</p>
-                    <span class="date">October 5, 2023</span>
-                </div>
-                <div class="announcement">
-                    <h3>Sports Day 2023</h3>
-                    <p>Annual sports day will be held on November 10. Registrations open now!</p>
-                    <span class="date">October 1, 2023</span>
-                </div>
-                <div class="announcement">
-                    <h3>New Library Resources</h3>
-                    <p>We've added 500 new books to our library. Come check them out!</p>
-                    <span class="date">September 28, 2023</span>
-                </div>
-                <div class="slider-controls">
-                    <button class="prev-btn" aria-label="Previous announcement"><i class="fas fa-chevron-left"></i></button>
-                    <button class="next-btn" aria-label="Next announcement"><i class="fas fa-chevron-right"></i></button>
+        <section class="announcements">
+            <div class="container">
+                <h2>Latest Announcements</h2>
+                <div class="announcement-slider">
+                    <div class="announcement active">
+                        <h3>Parent-Teacher Meetings</h3>
+                        <p>Scheduled for next week, October 15-19. Please check your emails for time slots.</p>
+                        <span class="date">October 5, 2023</span>
+                    </div>
+                    <div class="announcement">
+                        <h3>Sports Day 2023</h3>
+                        <p>Annual sports day will be held on November 10. Registrations open now!</p>
+                        <span class="date">October 1, 2023</span>
+                    </div>
+                    <div class="announcement">
+                        <h3>New Library Resources</h3>
+                        <p>We've added 500 new books to our library. Come check them out!</p>
+                        <span class="date">September 28, 2023</span>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="prev-btn" aria-label="Previous announcement"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next-btn" aria-label="Next announcement"><i class="fas fa-chevron-right"></i></button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Lalmani Vikash Bharti School</h3>
-                    <p>Lalmani Vikash Bharti School, Laldarwaza, <br>Behind Powerhouse, Munger, Bihar -811201 <br>
-                        <br>Phone: &emsp; +91 8884758905 &emsp; 06344-220275 <br>
-                         <br>Email: </p>
+                    <p>Lalmani Vikash Bharti School, Laldarwaza,<br>Behind Powerhouse, Munger, Bihar - 811201</p>
+                    <p><i class="fas fa-phone"></i> +91 8884758905</p>
+                    <p><i class="fas fa-phone"></i> 06344-220275</p>
+                    <p><i class="fas fa-envelope"></i> info@lalmanischool.edu</p>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">About Us</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -171,67 +477,61 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const nav = document.querySelector('nav ul');
-
-    mobileMenu.addEventListener('click', () => {
-        nav.classList.toggle('open');
-    });
-
-    const dropdownLinks = document.querySelectorAll('.dropdown > a');
-
-    dropdownLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const parentDropdown = link.parentElement;
-            parentDropdown.classList.toggle('active');
-
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                if (dropdown !== parentDropdown) {
-                    dropdown.classList.remove('active');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            // Mobile menu toggle
+            mobileMenu.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
+            
+            // Announcement slider functionality
+            const announcements = document.querySelectorAll('.announcement');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+            
+            function showAnnouncement(index) {
+                announcements.forEach((announcement, i) => {
+                    announcement.classList.toggle('active', i === index);
+                });
+            }
+            
+            function nextAnnouncement() {
+                currentIndex = (currentIndex + 1) % announcements.length;
+                showAnnouncement(currentIndex);
+            }
+            
+            function prevAnnouncement() {
+                currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
+                showAnnouncement(currentIndex);
+            }
+            
+            prevBtn.addEventListener('click', prevAnnouncement);
+            nextBtn.addEventListener('click', nextAnnouncement);
+            
+            // Keyboard navigation for slider
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevAnnouncement();
+                } else if (e.key === 'ArrowRight') {
+                    nextAnnouncement();
                 }
             });
+            
+            // Auto-rotate announcements (optional)
+            let slideInterval = setInterval(nextAnnouncement, 5000);
+            
+            // Pause auto-rotation when hovering over slider
+            const slider = document.querySelector('.announcement-slider');
+            slider.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(nextAnnouncement, 5000);
+            });
         });
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.dropdown').forEach(dropdown => dropdown.classList.remove('active'));
-        }
-    });
-
-    const announcements = document.querySelectorAll('.announcement');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentIndex = 0;
-
-    const updateSlider = (index) => {
-        announcements.forEach((announcement, i) => {
-            announcement.classList.toggle('active', i === index);
-        });
-    };
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
-        updateSlider(currentIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % announcements.length;
-        updateSlider(currentIndex);
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
-            updateSlider(currentIndex);
-        } else if (e.key === 'ArrowRight') {
-            currentIndex = (currentIndex + 1) % announcements.length;
-            updateSlider(currentIndex);
-        }
-    });
-});
-
     </script>
 </body>
 </html>
