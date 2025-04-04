@@ -3,183 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - XYZ</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Contact Us - Lalmani Vikash Bharti School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .dropdown-content {
-            display: none;
-            line-height: 40px;
-            position: absolute;
-            background-color: #fff;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            z-index: 1000;
-        }
-
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
-
-        .announcement-slider .announcement {
-            display: none;
-        }
-
-        .announcement-slider .announcement.active {
-            display: block;
-        }
-
-        nav ul {
-            list-style: none;
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .mobile-menu {
-            cursor: pointer;
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .logo h1 a:hover {
+            color: #f1c40f;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
             display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            padding: 10px 0;
         }
-
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown > a::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 40px 0;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .breadcrumb a {
+            color: #f1c40f;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Contact Info Section */
+        .contact-info {
+            padding: 40px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .info-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.5s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card i {
+            font-size: 2.5rem;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+        
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .info-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Contact Form Section */
+        .contact-form {
+            padding: 60px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f1c40f;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto 0;
+        }
+        
+        .submit-btn:hover {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        /* Map Section */
+        .map-container {
+            margin-top: 60px;
+        }
+        
+        .map-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .map {
+            height: 0;
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Emergency Contact */
+        .emergency-contact {
+            padding: 60px 0;
+        }
+        
+        .emergency-card {
+            background-color: #fff8e1;
+            border-left: 5px solid #f1c40f;
+            padding: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .emergency-card i {
+            font-size: 3rem;
+            color: #e74c3c;
+        }
+        
+        .emergency-content h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .emergency-content p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .emergency-phone {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e74c3c;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #f1c40f;
+        }
+        
+        .footer-col p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #f1c40f;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a:hover {
+            color: #f1c40f;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
             nav ul {
                 display: none;
                 flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #2c3e50;
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
-
+            
             nav ul.open {
                 display: flex;
             }
-
-            .mobile-menu {
-                display: block;
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+                padding: 10px;
+            }
+            
+            .emergency-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="header-container container">
             <div class="logo">
                 <h1><a href="index.html">Lalmani Vikash Bharti School</a></h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)">About Us <i class="fas fa-chevron-down"></i></a>
+                        <a href="#">About Us</a>
                         <div class="dropdown-content">
-                            <a href="about.html">About</a><br>
-                            <a href="">From Principal</a><br>
-                            <a href="">Staff</a><br>
+                            <a href="about.html"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;About</a>
+                            <a href="#"><i class="fas fa-user-tie"></i>&nbsp;&nbsp;From Principal</a>
+                            <a href="#"><i class="fas fa-users"></i>&nbsp;&nbsp;Staff</a>
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)">Academics <i class="fas fa-chevron-down"></i></a>
+                        <a href="#">Academics</a>
                         <div class="dropdown-content">
-                            <a href="">School Timings</a><br>
-                            <a href="">Syllabus</a><br>
-                            <a href="">Holiday List</a><br>
-                            <a href="">Fee Structure</a><br>
-                            <a href="">General Guidelines</a><br>
+                            <a href="#"><i class="fas fa-clock"></i>&nbsp;&nbsp;School Timings</a>
+                            <a href="#"><i class="fas fa-tasks"></i>&nbsp;&nbsp;Syllabus</a>
+                            <a href="#"><i class="fas fa-umbrella-beach"></i>&nbsp;&nbsp;Holiday List</a>
+                            <a href="#"><i class="fa fa-inr"></i>&nbsp;&nbsp;Fee Structure</a>
+                            <a href="#"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp;General Guidelines</a>
                         </div>
                     </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
                 <div class="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
             </nav>
         </div>
-    </header><br><br>
+    </header>
 
-    
-
-    <section class="contact-info">
-        <div class="container">
-            <div class="info-grid">
-                <div class="info-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Address</h3>
-                    <p>Laldarwaza, Behind Powerhouse, Munger, Bihar -811201</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-phone"></i>
-                    <h3>Phone</h3>
-                    <p>Main Office: +91 8884758905</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>General Inquiries: info@brightfuture.edu</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Office Hours</h3>
-                    <p>Monday-Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 12:00 PM</p>
+    <main>
+        <section class="contact-info">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Address</h3>
+                        <p>Lalmani Vikash Bharti School<br>Laldarwaza, Behind Powerhouse<br>Munger, Bihar - 811201</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>Main Office: +91 8884758905<br>Reception: 06344-220275</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>General Inquiries:@lalmanischool.edu</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Office Hours</h3>
+                        <p>Monday-Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 12:00 PM</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact-form"><center>
-        <div class="container">
-            <center><div class="map-container">
-                <h2>Visit Our Campus</h2>
-                <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225.2806734864408!2d86.47045535339437!3d25.388377651798038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f1ef1cbf9fa22d%3A0xb3b8b73a1e904b98!2sLalmani%20Vikas%20Bharti%20Middle%20School!5e0!3m2!1sen!2sin!4v1743496556566!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <section class="contact-form">
+            <div class="container">
+                <div class="form-container">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" action="https://formsubmit.co/chieftainofthedunedain.bgp@gmail.com" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
                 </div>
-            </div></center>
-        </div></center>
-    </section>
 
-    <section class="departments">
-        <div class="container">
-            <h2>Contact Specific Departments</h2>
-            <div class="department-grid">
-                <div class="department-card">
-                    <h3>Academic Office</h3>
-                    <p><i class="fas fa-phone"></i> (123) 456-7892</p>
-                    <p><i class="fas fa-envelope"></i> academics@brightfuture.edu</p>
-                    <a href="academics.html" class="btn-small">Visit Academics Page</a>
-                </div>
-                <div class="department-card">
-                    <h3>Student Services</h3>
-                    <p><i class="fas fa-phone"></i> (123) 456-7893</p>
-                    <p><i class="fas fa-envelope"></i> studentservices@brightfuture.edu</p>
-                    <a href="#" class="btn-small">Learn More</a>
-                </div>
-                <div class="department-card">
-                    <h3>Business Office</h3>
-                    <p><i class="fas fa-phone"></i> (123) 456-7896</p>
-                    <p><i class="fas fa-envelope"></i> businessoffice@brightfuture.edu</p>
-                    <a href="#" class="btn-small">Tuition Information</a>
+                <div class="map-container">
+                    <h2>Visit Our Campus</h2>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d225.2806734864408!2d86.47045535339437!3d25.388377651798038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f1ef1cbf9fa22d%3A0xb3b8b73a1e904b98!2sLalmani%20Vikas%20Bharti%20Middle%20School!5e0!3m2!1sen!2sin!4v1743496556566!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="emergency-contact">
-        <div class="container">
-            <div class="emergency-card">
-                <i class="fas fa-exclamation-triangle"></i>
-                <div class="emergency-content">
-                    <h3>Emergency Contact</h3>
-                    <p>For urgent matters outside of office hours, please call our 24-hour emergency line:</p>
-                    <p class="emergency-phone"><i class="fas fa-phone"></i> (123) 456-7899</p>
+        <section class="emergency-contact">
+            <div class="container">
+                <div class="emergency-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="emergency-content">
+                        <h3>Emergency Contact</h3>
+                        <p>For urgent matters outside of office hours, please call our 24-hour emergency line:</p>
+                        <p class="emergency-phone"><i class="fas fa-phone"></i> +91 8884758905</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Lalmani Vikash Bharti School</h3>
-                    <p>Lalmani Vikash Bharti School, Laldarwaza, <br>Behind Powerhouse, Munger, Bihar -811201 <br>
-                        <br>Phone: &emsp; +91 8884758905 &emsp; 06344-220275 <br>
-                         <br>Email: </p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lalmani Vikash Bharti School, Laldarwaza,<br>Behind Powerhouse, Munger, Bihar - 811201</p>
+                    <p><i class="fas fa-phone"></i> +91 8884758905</p>
+                    <p><i class="fas fa-phone"></i> 06344-220275</p>
+                    <p><i class="fas fa-envelope"></i> info@lalmanischool.edu</p>
                 </div>
                 <div class="footer-col">
                     <h3>Quick Links</h3>
@@ -192,10 +615,10 @@
                 <div class="footer-col">
                     <h3>Connect With Us</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -209,70 +632,55 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const nav = document.querySelector('nav ul');
-
-    mobileMenu.addEventListener('click', () => {
-        nav.classList.toggle('open');
-    });
-
-    const dropdownLinks = document.querySelectorAll('.dropdown > a');
-
-    dropdownLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const parentDropdown = link.parentElement;
-            parentDropdown.classList.toggle('active');
-
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                if (dropdown !== parentDropdown) {
-                    dropdown.classList.remove('active');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            
+            // Mobile menu toggle
+            mobileMenu.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
+            
+            // Form submission handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // Here you would typically send the form data to a server
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Dropdown functionality
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('a');
+                
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
                 }
             });
         });
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.dropdown').forEach(dropdown => dropdown.classList.remove('active'));
-        }
-    });
-
-    const announcements = document.querySelectorAll('.announcement');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentIndex = 0;
-
-    const updateSlider = (index) => {
-        announcements.forEach((announcement, i) => {
-            announcement.classList.toggle('active', i === index);
-        });
-    };
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
-        updateSlider(currentIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % announcements.length;
-        updateSlider(currentIndex);
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            currentIndex = (currentIndex - 1 + announcements.length) % announcements.length;
-            updateSlider(currentIndex);
-        } else if (e.key === 'ArrowRight') {
-            currentIndex = (currentIndex + 1) % announcements.length;
-            updateSlider(currentIndex);
-        }
-    });
-});
-
     </script>
 </body>
 </html>
