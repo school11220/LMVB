@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Lalmani Vikash Bharti School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="logo.png">
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -41,7 +41,6 @@
             height: auto;
         }
         
-        /* Header Styles */
         header {
             background-color: #2c3e50;
             color: white;
@@ -68,7 +67,6 @@
             color: #f1c40f;
         }
         
-        /* Navigation */
         nav ul {
             display: flex;
             gap: 20px;
@@ -87,7 +85,6 @@
             color: #2c3e50;
         }
         
-        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -129,7 +126,6 @@
             font-size: 0.8rem;
         }
         
-        /* Mobile Menu */
         .mobile-menu {
             display: none;
             cursor: pointer;
@@ -137,13 +133,11 @@
             color: white;
         }
         
-        /* Main Content */
         main {
             margin-top: 80px;
             padding: 40px 0;
         }
         
-        /* Page Header */
         .page-header {
             background-color: #2c3e50;
             color: white;
@@ -171,7 +165,6 @@
             text-decoration: underline;
         }
         
-        /* About Content */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -225,7 +218,6 @@
             top: 5px;
         }
         
-        /* Stats Section */
         .stats {
             background-color: #f1c40f;
             padding: 30px;
@@ -251,7 +243,6 @@
             color: #333;
         }
         
-        /* Leadership Team */
         .leadership {
             background-color: #f1f5f9;
             padding: 60px 0;
@@ -318,7 +309,6 @@
             color: #555;
         }
         
-        /* Footer */
         footer {
             background-color: #2c3e50;
             color: white;
@@ -390,7 +380,7 @@
             color: #f1c40f;
         }
         
-        /* Responsive Design */
+        
         @media (max-width: 768px) {
             .mobile-menu {
                 display: block;
@@ -422,7 +412,7 @@
 
             .about-grid {
                 grid-template-columns: 1fr;
-        }
+            }
             
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -585,12 +575,10 @@
             const mobileMenu = document.querySelector('.mobile-menu');
             const nav = document.querySelector('nav ul');
             
-            // Mobile menu toggle
             mobileMenu.addEventListener('click', () => {
                 nav.classList.toggle('open');
             });
             
-            // Dropdown functionality
             const dropdowns = document.querySelectorAll('.dropdown');
             
             dropdowns.forEach(dropdown => {
@@ -600,7 +588,6 @@
                     e.preventDefault();
                     dropdown.classList.toggle('active');
                     
-                    // Close other dropdowns
                     dropdowns.forEach(otherDropdown => {
                         if (otherDropdown !== dropdown) {
                             otherDropdown.classList.remove('active');
@@ -609,7 +596,6 @@
                 });
             });
             
-            // Close dropdowns when clicking outside
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.dropdown')) {
                     dropdowns.forEach(dropdown => {
